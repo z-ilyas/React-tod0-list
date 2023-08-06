@@ -1,12 +1,20 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function app () {
     const [ task, setTask ] = useState('');
     const [ status, setStatus ] = useState('');
-
+    const tasks = useSelector((store) => store.allTasks);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch({
+            type: 'SAGA_FETCH_ALL_TASKS'
+        })
+      }, []);
 
     const submitTask = () => {
         dispatch ({
@@ -39,6 +47,15 @@ function app () {
                     onChange={(event) => setStatus(event.target.value)}
                 />
                 <button onClick={submitTask}>Submit</button>
+            </div>
+            <div>
+                <h1> All Tasks</h1>
+                <ul>
+                    {tasks.map(Task => {
+                        return(
+                            <li>{Task}</li>
+                        )})}
+                </ul>
             </div>
         </>
     );   
