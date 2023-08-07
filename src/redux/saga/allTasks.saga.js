@@ -7,7 +7,7 @@ function* fetchAllTasks() {
       console.log('Should get the tasks in the databse', tasks.data);
       yield put({ type: 'GET_ALL_TASKS', payload: tasks.data});
     } catch (error) {
-         console.log('User get request failed', error);
+         console.log('Task get request failed', error);
     }
   }
 

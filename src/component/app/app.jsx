@@ -24,6 +24,8 @@ function app () {
                 status: status
             }
         })
+        setTask('');
+        setStatus('');
     }
 
     return(
@@ -53,7 +55,7 @@ function app () {
                 <ul>
                     {tasks.map(Task => {
                         return(
-                            <li>{Task}</li>
+                            <li key={Task.id}>{Task.tasks} - {Task.status}</li>
                         )})}
                 </ul>
             </div>

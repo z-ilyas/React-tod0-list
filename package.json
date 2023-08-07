@@ -22,7 +22,6 @@
   "main": "index.js",
   "proxy": "http://localhost:5000",
   "scripts": {
-    "start": "node server/server.js",
     "client": "react-scripts start",
     "server": "nodemon --watch server server/server.js",
     "build": "react-scripts build",
@@ -43,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
