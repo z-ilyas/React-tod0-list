@@ -20,6 +20,7 @@
   "name": "react-tod0-list",
   "version": "1.0.0",
   "main": "index.js",
+  "proxy": "http://localhost:5000",
   "scripts": {
     "start": "node server/server.js",
     "client": "react-scripts start",
