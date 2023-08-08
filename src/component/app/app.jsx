@@ -28,6 +28,20 @@ function app () {
         setStatus('');
     }
 
+    const completeTask = (id) => {
+        dispatch ({
+            type: 'SAGA_COMPLETE_TASK',
+            payload: id
+        })
+    }
+
+    const deleteTask = (id) => {
+        dispatch ({
+            type: 'SAGA_DELETE_TASK',
+            payload: id
+        })
+    }
+
     return(
         <>
             <div>
@@ -55,7 +69,9 @@ function app () {
                 <ul>
                     {tasks.map(Task => {
                         return(
-                            <li key={Task.id}>{Task.tasks} - {Task.status}</li>
+                            <li key={Task.id}>
+                                {Task.tasks} - {Task.status} - <button onClick={() => completeTask(Task.id)}>Complete</button> - <button onClick={() => deleteTask(Task.id)}>Delete</button>
+                            </li>
                         )})}
                 </ul>
             </div>

@@ -42,4 +42,42 @@ router.get ('/', (req, res) => {
   })
 
 });
+
+router.post('/:id', (req, res) => {
+
+  const id = req.params.id;
+
+  const sqlText = `
+    UPDATE "to-do-list"
+    SET "status"= 'complete'
+    WHERE "id" = $1;
+  `;
+  pool.query (sqlText, [id])
+    .then(dbRes => {
+      res.sendStatus(200)
+    })
+    .catch(dbErr => {
+      console.log('Error iside PUT /id:', dbErr);
+      res.sendStatus(500);
+    })
+});
+
+
+router.delete('/:id', (req, res) => {
+  const id = req.params.id
+
+  const sqlText = `
+    DELETE FROM "to-do-list"
+      WHERE id=$1;
+  `;
+  pool.query(sqlText, [id])
+    .then(dbRes => {
+      res.sendStatus(200);
+    })
+    .catch(dbErr => {
+      console.log('Error iside DELETE /favorite/:favid:', dbErr);
+      res.sendStatus(500);
+    })
+});
+
 module.exports = router;
