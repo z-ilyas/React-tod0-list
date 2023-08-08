@@ -5,7 +5,7 @@ import allTasks from './allTasks.saga';
 export default function* rootSaga() {
     yield all([
         createTask(),
-        allTasks(),
+        allTasks()
     ]);
 }
 

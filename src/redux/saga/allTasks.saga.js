@@ -3,7 +3,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 function* fetchAllTasks() {
     try {
-      const tasks = yield axios.get('/task');
+      const tasks = yield axios.get('/api/task');
       console.log('Should get the tasks in the databse', tasks.data);
       yield put({ type: 'GET_ALL_TASKS', payload: tasks.data});
     } catch (error) {
